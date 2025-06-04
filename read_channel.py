@@ -1,9 +1,13 @@
 from pyrogram import Client
 import asyncio
+from dotenv import load_dotenv
+import os
 
-API_ID = 29100409
-API_HASH = "3b4939c97c8431d565d8897811c2cda9"
-CHANNEL = "@hogwartsdrums"
+load_dotenv()  # загрузить переменные из .env
+
+API_ID = int(os.getenv("API_ID"))
+API_HASH = os.getenv("API_HASH")
+CHANNEL = os.getenv("CHANNEL")
 
 async def find_messages_by_keyword(keyword: str):
     async with Client("my_session", api_id=API_ID, api_hash=API_HASH) as app:
